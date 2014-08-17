@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    va debug = false;
+    var debug = false;
 
     var words;
     
