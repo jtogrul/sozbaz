@@ -1,0 +1,1 @@
+Sözbaz - Qafiyə generatoru

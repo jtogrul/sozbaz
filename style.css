@@ -1,0 +1,17 @@
+body {
+  padding-top: 50px;
+}
+.generator {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+#results span {
+  color: #428bca;  
+  font-size: 20px;
+    border-radius: 3px;
+    padding: 2px;
+    margin: 10px 8px;
+    width: 400px;
+    //background-color: #f1f1f1;
+}
