@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    va debug = false;
+    var debug = true;
 
     var words;
     
@@ -13,6 +13,7 @@ $(document).ready(function(){
         var c = word.length; // length of the word
         var i = c-1; // cursor
         var l = 1; // last syllable length
+        var vowelFound = false;
         
         while (i > -1) {
             
@@ -25,21 +26,23 @@ $(document).ready(function(){
                 
             } else {
                 
-                var currectIsVowel = _.contains(vowels, word[i].toLowerCase());
+                var currentIsVowel = _.contains(vowels, word[i].toLowerCase());
                 var previousIsVowel = _.contains(vowels, word[i-1].toLowerCase());
                 
-                _i = currectIsVowel;
+                _i = currentIsVowel;
                 _i_1 = previousIsVowel;
+                
+                if ( currentIsVowel ) vowelFound = true;
 
-                if ( currectIsVowel && previousIsVowel) {
+                if ( currentIsVowel && previousIsVowel) {
                     push = true;
                 }
 
-                if ( (!currectIsVowel) && previousIsVowel && l > 1) {
+                if ( (!currentIsVowel) && previousIsVowel && l > 1 && vowelFound) {
                     push = true;
                 }
 
-                if ( (!currectIsVowel) && (!previousIsVowel) && l > 1) {
+                if ( (!currentIsVowel) && (!previousIsVowel) && l > 1 && vowelFound) {
                     push = true;
                 }
                 
@@ -51,14 +54,16 @@ $(document).ready(function(){
                 
                 var s = word.substr(i, l);
                 syllables.unshift(s);
+                
                 l = 0;
+                vowelFound = false;
                 
                 _s = s;
                 
             }
             
             if (debug)
-                alert('i=' + i + ' (' + previousIsVowel + ', ' + currectIsVowel + '), (' + _c_1 + ', ' + _c  +'), l=' + _l + ', s: ' + _s )
+                alert('i=' + i + ' (' + previousIsVowel + ', ' + currentIsVowel + '), (' + _c_1 + ', ' + _c  +'), l=' + _l + ', s: ' + _s )
             
             l++; // syllable is goind on
             i--; // move cursor
